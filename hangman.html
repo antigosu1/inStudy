@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Виселица!</title>
+</head>
+<body>
+<h1>Виселица!</h1>
+<script>
+var words = [
+	"программа",
+	"макака",
+	"прекрасный",
+	"оладушек",
+	"собака",
+	"крокодил",
+	"фонарь"
+];
+var word = words[Math.floor(Math.random()*words.length)];
+
+var answerArray = [];
+for (var i = 0; i < word.length; i++){
+answerArray[i] = "_";
+}
+
+var remainingSteps = 10;
+var remainingLetters = word.length;
+
+
+while(remainingLetters > 0){
+	//if(remainingLetters == 0){
+	//					break;
+	//				}
+	alert(answerArray.join(" "));
+		if(remainingSteps == 0){
+			alert("Попыток нет")
+		break;
+	}else {
+		var guess = prompt("Угадай букву или отмени действие с помощью отмена");
+	if (guess === null){
+		break;
+	}else if (guess.length !==1){
+		alert("Пожалуйста, введите только ОДНУ букву");
+	}else {
+		guess = guess.toLowerCase();
+	for (var j = 0; j < word.length; j++){
+		if (word[j] === guess){
+			answerArray[j] = guess;
+			remainingLetters--;
+			}
+		}
+	}
+	remainingSteps--;
+}
+}
+
+alert(answerArray.join(" "));
+if(remainingLetters == 0){
+	alert("Умничка, угадал: " + word);
+}
+
+
+</script>
+</body>
+</html>
